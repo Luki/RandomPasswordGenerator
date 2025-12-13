@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Custom Password Generator</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--ink: #05070f;
+			--card: rgba(17, 25, 40, 0.75);
+			--card-border: rgba(255, 255, 255, 0.1);
+			--accent: #80ffb4;
+			--accent-strong: #39d98a;
+			--muted: rgba(255, 255, 255, 0.62);
+			--danger: #ff5c88;
+			font-family: 'Space Grotesk', sans-serif;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+
+		py-script,
+		py-config {
+			display: none;
+		}
+
+		body {
+			min-height: 100vh;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background: radial-gradient(circle at 10% 20%, #0f1629, #05070f 60%),
+				radial-gradient(circle at 90% 10%, rgba(128, 255, 180, 0.35), transparent 50%),
+				radial-gradient(circle at 80% 80%, rgba(255, 92, 136, 0.15), transparent 55%);
+			color: white;
+			padding: 3rem 1.5rem;
+		}
+
+		main {
+			width: min(720px, 100%);
+			position: relative;
+		}
+
+		.hero {
+			text-align: left;
+			margin-bottom: 1.5rem;
+		}
+
+		.hero h1 {
+			font-size: clamp(2rem, 5vw, 3.4rem);
+			font-weight: 600;
+			margin: 0 0 0.5rem;
+		}
+
+		.hero p {
+			font-size: 1rem;
+			color: var(--muted);
+			margin: 0;
+			max-width: 52ch;
+		}
+
+		.card {
+			background: var(--card);
+			border: 1px solid var(--card-border);
+			border-radius: 28px;
+			padding: 2rem;
+			backdrop-filter: blur(18px);
+			box-shadow: 0 20px 60px rgba(5, 7, 15, 0.55);
+		}
+
+		.display-row {
+			display: flex;
+			gap: 0.75rem;
+			align-items: stretch;
+			margin-bottom: 1.25rem;
+		}
+
+		.display-row input {
+			flex: 1;
+			border-radius: 20px;
+			border: 1px solid var(--card-border);
+			background: rgba(5, 7, 15, 0.4);
+			color: white;
+			font-size: 1.1rem;
+			padding: 0.85rem 1.25rem;
+			letter-spacing: 0.08em;
+		}
+
+		.display-row button {
+			border: none;
+			border-radius: 18px;
+			padding: 0 1.5rem;
+			font-size: 0.95rem;
+			font-weight: 600;
+			color: var(--ink);
+			background: var(--accent);
+			cursor: pointer;
+			transition: transform 200ms ease, box-shadow 200ms ease;
+		}
+
+		.display-row button:active {
+			transform: translateY(1px);
+		}
+
+		label.length {
+			display: flex;
+			justify-content: space-between;
+			font-size: 0.95rem;
+			font-weight: 500;
+			margin-bottom: 0.35rem;
+		}
+
+		input[type="range"] {
+			width: 100%;
+			accent-color: var(--accent-strong);
+			margin-bottom: 1.25rem;
+		}
+
+		.toggle-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+			gap: 0.85rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.toggle {
+			position: relative;
+			border: 1px solid var(--card-border);
+			border-radius: 20px;
+			padding: 0.9rem 1rem;
+			display: flex;
+			align-items: center;
+			gap: 0.75rem;
+			cursor: pointer;
+			background: rgba(255, 255, 255, 0.02);
+			transition: border 200ms ease, background 200ms ease;
+			font-size: 0.95rem;
+		}
+
+		.toggle input {
+			appearance: none;
+			width: 44px;
+			height: 24px;
+			border-radius: 999px;
+			border: 1px solid var(--card-border);
+			position: relative;
+			background: rgba(255, 255, 255, 0.1);
+			transition: background 200ms ease;
+		}
+
+		.toggle input::after {
+			content: '';
+			position: absolute;
+			width: 18px;
+			height: 18px;
+			border-radius: 50%;
+			background: white;
+			top: 50%;
+			left: 3px;
+			transform: translateY(-50%);
+			transition: transform 200ms ease;
+		}
+
+		.toggle input:checked {
+			background: linear-gradient(120deg, var(--accent), var(--accent-strong));
+		}
+
+		.toggle input:checked::after {
+			transform: translate(18px, -50%);
+		}
+
+		.toggle strong {
+			font-weight: 500;
+		}
+
+		.actions {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			flex-wrap: wrap;
+			gap: 1rem;
+		}
+
+		.status {
+			font-size: 0.9rem;
+			color: var(--muted);
+		}
+
+		.status.error {
+			color: var(--danger);
+		}
+
+		.primary {
+			border: none;
+			border-radius: 999px;
+			padding: 0.95rem 2.65rem;
+			font-size: 1rem;
+			font-weight: 600;
+			cursor: pointer;
+			background: linear-gradient(120deg, var(--accent), var(--accent-strong));
+			color: var(--ink);
+			transition: transform 200ms ease, box-shadow 200ms ease;
+		}
+
+		.primary:hover {
+			box-shadow: 0 12px 24px rgba(57, 217, 138, 0.35);
+		}
+
+		.primary:active {
+			transform: translateY(2px);
+		}
+
+		.copy-btn {
+			border: none;
+			border-radius: 18px;
+			padding: 0 1.5rem;
+			font-size: 0.95rem;
+			font-weight: 600;
+			color: var(--ink);
+			background: var(--accent);
+			cursor: pointer;
+			transition: transform 200ms ease, box-shadow 200ms ease;
+		}
+		.copy-btn:hover {
+			box-shadow: 0 12px 24px rgba(57, 217, 138, 0.35);
+		}
+		.copy-btn:active {
+			transform: translateY(2px);
+		}
+
+		@media (max-width: 540px) {
+			.card {
+				padding: 1.5rem;
+			}
+
+			.display-row {
+				flex-direction: column;
+			}
+
+			.display-row button {
+				width: 100%;
+				padding: 0.9rem;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<main>
+		<header class="hero">
+			<p class="eyebrow">Secure · Expressive · Instant</p>
+			<h1>Craft passwords that match your rules.</h1>
+			<p>Toggle exactly which character families should appear, set your length, and let secure Python code mix the
+				perfect combination using cryptographically strong randomness.</p>
+		</header>
+
+		<section class="card">
+			<div class="display-row">
+				<input id="password-output" type="text" placeholder="Click generate" readonly>
+				<button class="copy-btn" id="copy-btn" py-click="copy_password">Copy</button>
+			</div>
+
+			<label class="length" for="length">Length <span id="length-value">18</span></label>
+			<input id="length" type="range" min="8" max="64" value="18"
+				oninput="document.getElementById('length-value').textContent=this.value">
+
+			<div class="toggle-grid">
+				<label class="toggle">
+					<input id="lowercase" type="checkbox" checked>
+					<strong>Lowercase</strong>
+				</label>
+				<label class="toggle">
+					<input id="uppercase" type="checkbox" checked>
+					<strong>Uppercase</strong>
+				</label>
+				<label class="toggle">
+					<input id="numbers" type="checkbox" checked>
+					<strong>Numbers</strong>
+				</label>
+				<label class="toggle">
+					<input id="symbols" type="checkbox">
+					<strong>Symbols</strong>
+				</label>
+			</div>
+
+			<div class="actions">
+				<p id="status" class="status">Ready when you are.</p>
+				<button class="primary" py-click="generate_password">Generate</button>
+			</div>
+		</section>
+	</main>
+
+	<script type="module" src="https://pyscript.net/releases/2024.8.1/core.js"></script>
+	<py-config>
+		packages = []
+	</py-config>
+	<py-script>
+from js import document, navigator
+import secrets
+import string
+
+
+def get_controls():
+	return {
+		"length": int(document.getElementById("length").value),
+		"lowercase": document.getElementById("lowercase").checked,
+		"uppercase": document.getElementById("uppercase").checked,
+		"numbers": document.getElementById("numbers").checked,
+		"symbols": document.getElementById("symbols").checked,
+	}
+
+
+def update_status(message, error=False):
+	status_element = document.getElementById("status")
+	status_element.innerText = message
+	if error:
+		status_element.classList.add("error")
+	else:
+		status_element.classList.remove("error")
+
+
+def generate_password(event=None):
+	controls = get_controls()
+	pools = []
+	if controls["lowercase"]:
+		pools.append(string.ascii_lowercase)
+	if controls["uppercase"]:
+		pools.append(string.ascii_uppercase)
+	if controls["numbers"]:
+		pools.append(string.digits)
+	if controls["symbols"]:
+		pools.append("!@#$%^&*()-_=+[]{};:,.?/|")
+
+	if not pools:
+		document.getElementById("password-output").value = ""
+		update_status("Select at least one character type.", error=True)
+		return
+
+	alphabet = "".join(pools)
+	password = "".join(secrets.choice(alphabet) for _ in range(controls["length"]))
+	document.getElementById("password-output").value = password
+	update_status("Fresh password generated.")
+
+
+async def copy_password(event=None):
+	value = document.getElementById("password-output").value
+	if not value:
+		update_status("Generate a password before copying.", error=True)
+		return
+
+	try:
+		await navigator.clipboard.writeText(value)
+		update_status("Password copied to clipboard.")
+	except Exception:
+		update_status("Clipboard is unavailable in this browser.", error=True)
+	</py-script>
+</body>
+
+</html>
