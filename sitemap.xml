@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
-    <loc>https://luki.github.io/RandomPasswordGenerator/</loc>
-    <priority>1.0</priority>
+    <loc>https://www.custompasswordgenerator.org/</loc>
   </url>
+
+  <url>
+    <loc>https://www.custompasswordgenerator.org/About_Us.html</loc>
+  </url>
+
+  <url>
+    <loc>https://www.custompasswordgenerator.org/Contact_US.html</loc>
+  </url>
+
+  <url>
+    <loc>https://www.custompasswordgenerator.org/Privacy_Policy.html</loc>
+  </url>
+
 </urlset>
