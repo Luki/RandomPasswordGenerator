@@ -451,3 +451,254 @@
 				width: auto;
 			}
 		}
+
+		/* ===========================================
+		   Strong password guide page visual styles
+		   =========================================== */
+		.password-guide {
+			padding-bottom: 0.5rem;
+		}
+
+		.password-guide .hero {
+			margin-bottom: 1.25rem;
+		}
+
+		.guide-intro,
+		.guide-section,
+		.guide-reminder {
+			background: var(--card);
+			border: 1px solid var(--card-border);
+			border-radius: 20px;
+			backdrop-filter: blur(18px);
+			box-shadow: 0 20px 60px rgba(5, 7, 15, 0.35);
+		}
+
+		.guide-intro,
+		.guide-reminder {
+			padding: 1rem;
+		}
+
+		.guide-intro {
+			margin-bottom: 1rem;
+		}
+
+		.guide-intro p,
+		.guide-section p,
+		.guide-section li,
+		.guide-reminder p {
+			color: var(--muted);
+			line-height: 1.65;
+		}
+
+		.guide-intro p,
+		.guide-section p,
+		.guide-reminder p {
+			margin: 0;
+		}
+
+		.guide-grid {
+			display: grid;
+			gap: 1rem;
+		}
+
+		.guide-section {
+			padding: 1rem;
+		}
+
+		.guide-section h2 {
+			margin: 0 0 0.55rem;
+			font-size: 1.18rem;
+		}
+
+		.guide-section ul {
+			margin: 0.7rem 0 0;
+			padding-left: 1.2rem;
+		}
+
+		.guide-section li + li {
+			margin-top: 0.3rem;
+		}
+
+		.guide-reminder {
+			margin-top: 1rem;
+			border-color: rgba(128, 255, 180, 0.32);
+		}
+
+		.guide-reminder strong,
+		.guide-section strong {
+			color: var(--accent);
+		}
+
+		/* ==============================
+		   Password tester page styles
+		   ============================== */
+		.tester-page {
+			width: min(720px, 100%);
+			min-height: calc(100svh - 2.35rem);
+			margin: 0 auto;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.tester-card {
+			flex: initial;
+		}
+
+		.tester-card h2 {
+			margin: 0 0 1.2rem;
+			font-size: 1.25rem;
+		}
+
+		.tester-label {
+			display: block;
+			margin-bottom: 0.45rem;
+			font-size: 0.9rem;
+			font-weight: 500;
+		}
+
+		.tester-input {
+			width: 100%;
+			border: 1px solid var(--card-border);
+			border-radius: 14px;
+			padding: 0.85rem 0.95rem;
+			background: rgba(5, 7, 15, 0.4);
+			color: white;
+			font: inherit;
+		}
+
+		.tester-input:focus {
+			outline: 2px solid var(--accent-strong);
+			outline-offset: 2px;
+		}
+
+		.strength-result,
+		.suggestion-heading {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1rem;
+		}
+
+		.strength-result {
+			margin-top: 1rem;
+		}
+
+		.strength-label {
+			font-size: 1rem;
+			font-weight: 600;
+		}
+
+		.strength-label.weak {
+			color: var(--danger);
+		}
+
+		.strength-label.okay {
+			color: #ffe16b;
+		}
+
+		.strength-label.strong {
+			color: var(--accent);
+		}
+
+		.strength-score,
+		.tester-detail {
+			color: var(--muted);
+		}
+
+		.strength-score {
+			font-size: 0.85rem;
+			white-space: nowrap;
+		}
+
+		.strength-meter {
+			height: 0.5rem;
+			margin: 0.55rem 0 0.7rem;
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.12);
+			overflow: hidden;
+		}
+
+		.strength-meter span {
+			display: block;
+			height: 100%;
+			width: 0;
+			background: linear-gradient(90deg, var(--danger), #ffe16b, var(--accent-strong));
+			transition: width 200ms ease;
+		}
+
+		.tester-detail {
+			margin: 0;
+			font-size: 0.86rem;
+			line-height: 1.5;
+		}
+
+		.suggestion-heading {
+			margin-top: 1.6rem;
+		}
+
+		.suggestion-heading .tester-label {
+			margin: 0;
+		}
+
+		.icon-button {
+			width: 38px;
+			height: 38px;
+			border: 1px solid var(--card-border);
+			border-radius: 50%;
+			background: rgba(128, 255, 180, 0.12);
+			color: var(--accent);
+			font-size: 1.2rem;
+			cursor: pointer;
+		}
+
+		.icon-button:hover {
+			box-shadow: 0 0 16px rgba(57, 217, 138, 0.35);
+		}
+
+		.suggestion-input {
+			margin-bottom: 0.65rem;
+			letter-spacing: 0.04em;
+		}
+
+		@media (min-width: 541px) {
+			.tester-page {
+				min-height: auto;
+			}
+
+			.tester-card {
+				padding: 2rem;
+			}
+
+			.tester-input {
+				border-radius: 18px;
+				padding: 0.95rem 1.1rem;
+			}
+		}
+
+		@media (min-width: 900px) {
+			.tester-page {
+				width: min(820px, 100%);
+			}
+		}
+
+		@media (min-width: 641px) {
+			.password-guide .hero {
+				margin-bottom: 1.75rem;
+			}
+
+			.guide-intro,
+			.guide-reminder,
+			.guide-section {
+				border-radius: 28px;
+				padding: 1.3rem;
+			}
+
+			.guide-grid {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+				gap: 1.2rem;
+			}
+
+			.guide-section:last-child:nth-child(odd) {
+				grid-column: 1 / -1;
+			}
+		}
