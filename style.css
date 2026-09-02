@@ -567,8 +567,8 @@
 		}
 
 		.tester-input:focus {
-			outline: 2px solid var(--accent-strong);
-			outline-offset: 2px;
+			border-color: var(--accent-strong);
+			outline: none;
 		}
 
 		.strength-result,
@@ -638,6 +638,12 @@
 
 		.suggestion-heading .tester-label {
 			margin: 0;
+		}
+
+		.suggestion-actions {
+			display: flex;
+			gap: 0.5rem;
+			transform: translateY(-3px);
 		}
 
 		.icon-button {
