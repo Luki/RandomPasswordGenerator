@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css?v=20260902">
+        <meta name="description" content="Contact Custom Password Generator with questions or feedback about the password generator and website.">
+        <link rel="stylesheet" href="style.css?v=20260903">
         <link rel="canonical" href="https://www.custompasswordgenerator.org/Contact_US.html">
-        <title>Contact Us</title>
+        <title>Contact Custom Password Generator | Contact Us</title>
         <!-- Favicon -->
     	<link rel="icon" type="image/png" sizes="16x16" href="generator_logo.png">
     	<link rel="icon" type="image/png" sizes="32x32" href="generator_logo.png">
@@ -21,14 +23,22 @@
     </head>
     <body>
             <main class="page-shell">
-            <div>
+            <nav class="site-nav" aria-label="Primary">
+                <a href="/">Home</a>
+                <a href="/#password-generator">Password Generator</a>
+                <a href="/password_tester.html">Password Tester</a>
+                <a href="/how_to_create_strong_passwords.html">Strong Password Guide</a>
+                <a href="/About_Us.html">About</a>
+                <a href="/Contact_US.html">Contact</a>
+            </nav>
+            <header class="hero">
                 <h1>Contact Us</h1>
-                <p>If you have any questions or feedback, please reach out to us:<br>Email: <a class="contact-link" href="mailto:unis20133@gmail.com">Click here to email us</a></p>
+                <p>If you have any questions or feedback, please reach out to us:<br>Email: <a class="contact-link" href="mailto:unis20133@gmail.com">Email Custom Password Generator</a></p>
                 <p>Or just copy our email address and send us a message directly from your email client.</p>
-                <button class="copy-btn" style="padding: 0.5rem;" onclick="navigator.clipboard.writeText('unis20133@gmail.com').then(() => alert('Email address copied successfully'))">Copy Email</button>
-            </div>
+                <button class="copy-btn" type="button" style="padding: 0.5rem;" onclick="navigator.clipboard.writeText('unis20133@gmail.com').then(() => alert('Email address copied successfully'))">Copy Email</button>
+            </header>
 
-            <button class="back-btn" onclick="window.location.href='index.html'">Back to Home</button>
+            <a class="back-btn" href="/">Back to Home</a>
             </main>
     </body>
 </html>
