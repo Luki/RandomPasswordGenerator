@@ -5,12 +5,13 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="google-site-verification" content="wpNb7U0uT-n569p5bdSrx-Wb2VBI5rwaPpH2iQOry_M" />
+	<meta name="description" content="Generate strong, secure random passwords instantly. Choose password length, uppercase letters, lowercase letters, numbers, and symbols.">
 	<link rel="canonical" href="https://www.custompasswordgenerator.org/">
-	<title>Custom Password Generator</title>
+	<title>Random Password Generator – Create Strong Secure Passwords</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="style.css?v=20260902">
+	<link rel="stylesheet" href="style.css?v=20260903">
 	<!-- Favicon -->
 	<link rel="icon" type="image/png" sizes="16x16" href="generator_logo.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="generator_logo.png">
@@ -28,15 +29,23 @@
 
 <body>
 	<main>
+		<nav class="site-nav" aria-label="Primary">
+			<a href="/">Home</a>
+			<a href="/#password-generator">Password Generator</a>
+			<a href="/password_tester.html">Password Tester</a>
+			<a href="/how_to_create_strong_passwords.html">Strong Password Guide</a>
+			<a href="/About_Us.html">About</a>
+			<a href="/Contact_US.html">Contact</a>
+		</nav>
 		<header class="hero">
 			<p class="eyebrow">Secure · Expressive · Instant</p>
-			<h1>Craft passwords that match your rules.</h1>
+			<h1>Random Password Generator</h1>
 			<p>Toggle exactly which character families should appear, set your length, and let secure Python code mix the
 				perfect combination using cryptographically strong randomness.</p>
 			<p><span style="color: var(--danger); font-weight: 500;">WARNING:</span> <span style="color: var(--accent);">Make sure to copy your password before navigating away, as it will not be saved!</span></p>
 		</header>
 
-		<section class="card">
+		<section id="password-generator" class="card" aria-label="Password generator">
 			<div class="display-row">
 				<input id="password-output" type="text" placeholder="Click generate" readonly>
 				<button class="copy-btn" id="copy-btn" py-click="copy_password">Copy</button>
@@ -70,12 +79,20 @@
 				<button class="primary" py-click="generate_password">Generate</button>
 			</div>
 		</section>
+
+		<section class="home-tools" aria-label="Password tools">
+			<p>Already have a password? Use the tester to see how its length, character variety, and common patterns affect the result.</p>
+			<div class="tool-links">
+				<a class="tool-link" href="/password_tester.html">Test Your Password Strength</a>
+				<a class="tool-link" href="/how_to_create_strong_passwords.html">Learn How to Create a Strong Password</a>
+			</div>
+		</section>
 		<footer class="footer">
-			<a href="Privacy_Policy.html">Privacy Policy</a>
-			<a href="About_Us.html">About Us</a>
-			<a href="Contact_US.html">Contact Us</a>
-			<a href="how_to_create_strong_passwords.html">How to Create Strong Passwords</a>
-			<a href="password_tester.html">Test your Password</a>
+			<a href="/Privacy_Policy.html">Privacy Policy</a>
+			<a href="/About_Us.html">About Us</a>
+			<a href="/Contact_US.html">Contact Us</a>
+			<a href="/how_to_create_strong_passwords.html">How to Create Strong Passwords</a>
+			<a href="/password_tester.html">Test Your Password</a>
 		</footer>
 	</main>
 
