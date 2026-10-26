@@ -30,10 +30,9 @@
 <body>
 	<main>
 		<nav class="site-nav" aria-label="Primary">
-			<a href="/">Home</a>
-			<a href="/#password-generator">Password Generator</a>
 			<a href="/password_tester.html">Password Tester</a>
 			<a href="/how_to_create_strong_passwords.html">Strong Password Guide</a>
+			<a href="/Privacy_Policy.html">Privacy Policy</a>
 			<a href="/About_Us.html">About</a>
 			<a href="/Contact_US.html">Contact</a>
 		</nav>
@@ -42,7 +41,7 @@
 			<h1>Random Password Generator</h1>
 			<p>Toggle exactly which character families should appear, set your length, and let secure Python code mix the
 				perfect combination using cryptographically strong randomness.</p>
-			<p><span style="color: var(--danger); font-weight: 500;">WARNING:</span> <span style="color: var(--accent);">Make sure to copy your password before navigating away, as it will not be saved!</span></p>
+			<p><span style="color: var(--danger); font-weight: 500;">WARNING:</span> <span style="color: var(--accent);">Make sure to copy your password before navigating away or refreshing the page, as it will not be saved!</span></p>
 		</header>
 
 		<section id="password-generator" class="card" aria-label="Password generator">
@@ -87,13 +86,25 @@
 				<a class="tool-link" href="/how_to_create_strong_passwords.html">Learn How to Create a Strong Password</a>
 			</div>
 		</section>
-		<footer class="footer">
-			<a href="/Privacy_Policy.html">Privacy Policy</a>
-			<a href="/About_Us.html">About Us</a>
-			<a href="/Contact_US.html">Contact Us</a>
-			<a href="/how_to_create_strong_passwords.html">How to Create Strong Passwords</a>
-			<a href="/password_tester.html">Test Your Password</a>
-		</footer>
+
+		<section class="home-content" aria-label="Using a random password generator">
+			<section class="home-content-section">
+				<h2>Why Use a Random Password Generator?</h2>
+				<p>Passwords based on names, birthdays, familiar words, or patterns can be easier to predict, and people often reuse them across accounts. A random generator offers a <span class="highlight">practical, easy and secure way to create a less predictable password</span>. Use a <span class="highlight">different password for each account</span> so a password exposed in one service's data breach is less likely to put another account at risk.</p>
+			</section>
+			<section class="home-content-section">
+				<h2>Choose Length and Character Types</h2>
+				<p>Use the length slider to choose 4–64 characters, then enable or disable lowercase letters, uppercase letters, numbers, and symbols. A longer password and a <span class="highlight">larger character set allow more possible combinations</span>. Check the service's own length limits and character rules before using a generated password.</p>
+			</section>
+			<section class="home-content-section">
+				<h2>How This Generator Works</h2>
+				<p>After you choose the length and character types, select Generate. The Python code <span class="highlight">uses <code>secrets.choice</code></span> to draw each character from the combined set of enabled characters. This means a selected type is allowed but is not guaranteed to appear in every result. Select at least one character type; use <span class="highlight">Copy to place the displayed password on the clipboard</span> when your browser permits it. <span style="color: var(--danger); font-weight: 500;">The password will not be saved by the generator.</span></p>
+			</section>
+			<section class="home-content-section">
+				<h2>Use Generated Passwords Responsibly</h2>
+				<p>Use a <span class="highlight">unique password for each account and store it in a reputable password manager</span>. Do not share passwords, and follow the service's security and account-recovery guidance, including extra protections such as multi-factor authentication when available. A strong password helps, but cannot protect an account from every threat.</p>
+			</section>
+		</section>
 	</main>
 
 	<script type="module" src="https://pyscript.net/releases/2024.8.1/core.js"></script>
